@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     var countries      = [String]()
     var score          = 0
     var correctAnswer  = 0
+    var stepsCount     = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
-        
         
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
@@ -42,21 +42,43 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = countries[correctAnswer].uppercased()
+        title = "\(countries[correctAnswer].uppercased())   SCORE: \(score)"
     }
+    
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        var finalMessage = "Your score is \(score+1)"
+        stepsCount += 1
         
-        if sender.tag == correctAnswer {
+        if stepsCount == 5{
+            if sender.tag == correctAnswer {
+                score += 1
+            } else {
+                score -= 1
+            }
+            if score < 0 {
+                score = 0
+            }
+            title = "Thanks for the game!"
+            finalMessage = "Your total score is \(score)"
+            score = 0
+        } else if sender.tag == correctAnswer {
             title = "Correct"
             score += 1
         } else {
-            title = "Wrong"
-            score -= 1
+            title = "Wrong\nThat's the flag of "
+            if countries[sender.tag] == "us" || countries[sender.tag] == "uk" {
+                title += countries[sender.tag].uppercased()
+            } else {
+                title += countries[sender.tag].capitalized
+            }
+            if score != 0 {
+                score -= 1
+            }
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert) //actionSheet
+        let ac = UIAlertController(title: title, message: finalMessage, preferredStyle: .alert) //actionSheet
         
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         
