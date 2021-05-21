@@ -48,10 +48,11 @@ class ViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
-        var finalMessage = "Your score is \(score+1)"
+        var AlertControllerTitle = "Continue"
+        var finalMessage = "Your score is "
         stepsCount += 1
         
-        if stepsCount == 5{
+        if stepsCount == 5 {
             if sender.tag == correctAnswer {
                 score += 1
             } else {
@@ -62,10 +63,13 @@ class ViewController: UIViewController {
             }
             title = "Thanks for the game!"
             finalMessage = "Your total score is \(score)"
+            AlertControllerTitle = "Play again"
             score = 0
+            stepsCount = 0
         } else if sender.tag == correctAnswer {
             title = "Correct"
             score += 1
+            finalMessage += "\(score)"
         } else {
             title = "Wrong\nThat's the flag of "
             if countries[sender.tag] == "us" || countries[sender.tag] == "uk" {
@@ -76,11 +80,12 @@ class ViewController: UIViewController {
             if score != 0 {
                 score -= 1
             }
+            finalMessage += "\(score)"
         }
         
         let ac = UIAlertController(title: title, message: finalMessage, preferredStyle: .alert) //actionSheet
         
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        ac.addAction(UIAlertAction(title: AlertControllerTitle, style: .default, handler: askQuestion))
         
         present(ac, animated: true)
     }
