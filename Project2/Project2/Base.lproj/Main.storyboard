@@ -49,7 +49,21 @@
                             <constraint firstItem="cGS-0a-U9Q" firstAttribute="centerX" secondItem="Bgc-ZB-PGp" secondAttribute="centerX" id="ydz-YA-Xgq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fJr-ac-SBv"/>
+                    <navigationItem key="navigationItem" id="fJr-ac-SBv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Uro-Nm-um7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vdB-Zb-zA5">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Score"/>
+                                <connections>
+                                    <action selector="buttonScoreTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JrJ-7e-WZq"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="buttonScoreInfoTapped:" destination="BYZ-38-t0r" id="NdK-tZ-lAT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="button1" destination="Bgc-ZB-PGp" id="GZI-07-Dic"/>
                         <outlet property="button2" destination="cGS-0a-U9Q" id="Wlg-v8-sKd"/>

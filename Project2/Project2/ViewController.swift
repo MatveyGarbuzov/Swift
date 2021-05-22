@@ -42,7 +42,8 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = "\(countries[correctAnswer].uppercased())   SCORE: \(score)"
+//        title = "\(countries[correctAnswer].uppercased())   SCORE: \(score)"
+        title = "\(countries[correctAnswer].uppercased())"
     }
     
     
@@ -87,6 +88,12 @@ class ViewController: UIViewController {
         
         ac.addAction(UIAlertAction(title: AlertControllerTitle, style: .default, handler: askQuestion))
         
+        present(ac, animated: true)
+    }
+        
+    @IBAction func buttonScoreTapped(_ sender: UIButton) {
+        let ac = UIAlertController(title: "Your score is \(score)", message: nil,  preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Back", style: .default, handler: nil))
         present(ac, animated: true)
     }
     
