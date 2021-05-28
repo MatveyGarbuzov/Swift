@@ -38,7 +38,7 @@ class ViewController: UITableViewController {
         view.backgroundColor = UIColor.systemGray6
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.systemYellow]
         navigationController?.navigationBar.barTintColor = UIColor.systemYellow
-        
+        navigationController?.navigationBar.tintColor = .white
 //        navigationController?.navigationBar.barStyle = .black
     }
     
@@ -56,6 +56,10 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadRows(at: [indexPath], with: .fade)
-        
+        if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
+            vc.selectedCountry = "\(countries[indexPath.row]).png".lowercased()
+            vc.countries = countries
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
