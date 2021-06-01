@@ -55,14 +55,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cl0-Rj-ILY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="213"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jHk-o1-Ezb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Cl0-Rj-ILY" firstAttribute="top" secondItem="jHk-o1-Ezb" secondAttribute="top" id="FvY-3J-xWj"/>
-                            <constraint firstItem="jHk-o1-Ezb" firstAttribute="bottom" secondItem="Cl0-Rj-ILY" secondAttribute="bottom" constant="605" id="PEH-Ob-XBL"/>
+                            <constraint firstItem="Cl0-Rj-ILY" firstAttribute="top" secondItem="jHk-o1-Ezb" secondAttribute="top" constant="-44" id="FvY-3J-xWj"/>
+                            <constraint firstItem="jHk-o1-Ezb" firstAttribute="bottom" secondItem="Cl0-Rj-ILY" secondAttribute="bottom" constant="649" id="PEH-Ob-XBL"/>
                             <constraint firstItem="Cl0-Rj-ILY" firstAttribute="centerX" secondItem="ukC-lc-jCV" secondAttribute="centerX" id="Pk6-L1-PwL"/>
                             <constraint firstItem="Cl0-Rj-ILY" firstAttribute="leading" secondItem="jHk-o1-Ezb" secondAttribute="leading" id="s3z-I8-4O4"/>
                         </constraints>
