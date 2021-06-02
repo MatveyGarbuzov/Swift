@@ -60,8 +60,9 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadRows(at: [indexPath], with: .fade)
         if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
+            vc.selectedCountryName = "\(countries[indexPath.row])"
             vc.selectedCountry = "\(countries[indexPath.row]).png".lowercased()
-            vc.countries = countries
+            //vc.countries = countries
             navigationController?.pushViewController(vc, animated: true)
         }
     }
