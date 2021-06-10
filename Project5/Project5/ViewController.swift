@@ -22,19 +22,25 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+        let openButton = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+        openButton.tintColor = UIColor.systemYellow
+        navigationItem.rightBarButtonItem = openButton
         
-        let spacer  = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let flexSpacer  = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let fixedSpacer  = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         let backButton = UIBarButtonItem(barButtonSystemItem: .rewind, target: webView, action: #selector(webView.goBack))
         let forwardButton = UIBarButtonItem(barButtonSystemItem: .fastForward, target: webView, action: #selector(webView.goForward))
-
-        
-        progressView = UIProgressView(progressViewStyle: .default)
-        //progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)
         
-        toolbarItems = [backButton, forwardButton, progressButton, spacer, refresh]
+        progressView = UIProgressView(progressViewStyle: .default)
+        fixedSpacer.width = 30
+        backButton.tintColor    = UIColor.systemYellow
+        forwardButton.tintColor = UIColor.systemYellow
+        refresh.tintColor       = UIColor.systemYellow
+        //progressView.sizeToFit()
+        
+        toolbarItems = [backButton, forwardButton, fixedSpacer, progressButton, flexSpacer, refresh]
         navigationController?.isToolbarHidden = false
         
         
@@ -45,6 +51,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
+    
+    
 
     @objc func openTapped() {
         let ac = UIAlertController(title: "Which site do you wanna open?", message: nil, preferredStyle: .actionSheet)
