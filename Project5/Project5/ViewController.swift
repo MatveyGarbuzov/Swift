@@ -31,9 +31,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         let backButton = UIBarButtonItem(barButtonSystemItem: .rewind, target: webView, action: #selector(webView.goBack))
         let forwardButton = UIBarButtonItem(barButtonSystemItem: .fastForward, target: webView, action: #selector(webView.goForward))
+
+        progressView = UIProgressView(progressViewStyle: .default)
         let progressButton = UIBarButtonItem(customView: progressView)
         
-        progressView = UIProgressView(progressViewStyle: .default)
         fixedSpacer.width = 30
         backButton.tintColor    = UIColor.systemYellow
         forwardButton.tintColor = UIColor.systemYellow
