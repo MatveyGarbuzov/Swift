@@ -68,12 +68,22 @@ class ViewController: UITableViewController {
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
                 if isReal(word: lowerAnswer) {
-                    usedWords.insert(answer, at: 0)
-                    
-                    let indexPath = IndexPath(row: 0, section: 0) 
-                    tableView.insertRows(at: [indexPath], with: .automatic)
-                    
-                    return
+                    if isOneLetter(word: lowerAnswer) {
+                        if isEqualToOriginal(word: lowerAnswer) {
+                            usedWords.insert(answer, at: 0)
+                            
+                            let indexPath = IndexPath(row: 0, section: 0)
+                            tableView.insertRows(at: [indexPath], with: .automatic)
+                            
+                            return
+                        } else {
+                            errorTitle   = "It's initial word"
+                            errorMessage = "You can't enter the initial word"
+                        }
+                    } else {
+                        errorTitle   = "It's not a word"
+                        errorMessage = "You can't make words out of 1 letter"
+                    }
                 } else {
                     errorTitle   = "Word not recognized"
                     errorMessage = "You can't make words"
@@ -116,6 +126,17 @@ class ViewController: UITableViewController {
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         return misspelledRange.location == NSNotFound
+    }
+    
+    func isOneLetter(word: String) -> Bool {
+        if (word.count == 1) {
+            return false
+        }
+        return true
+    }
+    
+    func isEqualToOriginal(word: String) -> Bool {
+        return !(title == word)
     }
 
 }
