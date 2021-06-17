@@ -73,12 +73,16 @@ class ViewController: UITableViewController {
                 if isReal(word: lowerAnswer) {
                     if isOneLetter(word: lowerAnswer) {
                         if isEqualToOriginal(word: lowerAnswer) {
-                            usedWords.insert(answer, at: 0)
-                            
-                            let indexPath = IndexPath(row: 0, section: 0)
-                            tableView.insertRows(at: [indexPath], with: .automatic)
-                            
-                            return
+                            if isEmpty(word: lowerAnswer) {
+                                usedWords.insert(answer, at: 0)
+                                
+                                let indexPath = IndexPath(row: 0, section: 0)
+                                tableView.insertRows(at: [indexPath], with: .automatic)
+                                
+                                return
+                            } else {
+                                showErrorMessage(title: "It's an empty string", message: "You can't enter empty string")
+                            }
                         } else {
                             showErrorMessage(title: "It's initial word", message: "You can't enter the initial word")
                         }
@@ -138,6 +142,9 @@ class ViewController: UITableViewController {
     func isEqualToOriginal(word: String) -> Bool {
         return !(title == word)
     }
-
+    
+    func isEmpty(word: String) -> Bool {
+        return !word.isEmpty
+    }
 }
 
