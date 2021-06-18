@@ -48,6 +48,8 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Word", for: indexPath)
         cell.textLabel?.text = usedWords[indexPath.row]
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
+        cell.backgroundColor = UIColor.systemGray6
         return cell
     }
     
@@ -74,7 +76,7 @@ class ViewController: UITableViewController {
                     if isOneLetter(word: lowerAnswer) {
                         if isEqualToOriginal(word: lowerAnswer) {
                             if isEmpty(word: lowerAnswer) {
-                                usedWords.insert(answer, at: 0)
+                                usedWords.insert(answer.lowercased(), at: 0)
                                 
                                 let indexPath = IndexPath(row: 0, section: 0)
                                 tableView.insertRows(at: [indexPath], with: .automatic)
@@ -109,7 +111,7 @@ class ViewController: UITableViewController {
     
     func isPossible(word: String) -> Bool {
         guard var tempWord = title?.lowercased() else { return false }
-        
+
         for letter in word {
             if let position = tempWord.firstIndex(of: letter) {
                 tempWord.remove(at: position)
