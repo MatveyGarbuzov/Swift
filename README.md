@@ -6,5 +6,6 @@ Here's my projects for iOS
 - Project4 - CountryWiki (unfinished)
 - Project5 - Browser (unfinished)
 - Project6 - Game. Find words in word
+- Project7 - First look at VFL
 
 <img src="https://github.com/MatveyGarbuzov/Swift/blob/main/Project1/Example.gif" width="200" height="400" />  <img src="https://github.com/MatveyGarbuzov/Swift/blob/main/Project2/Example.gif" width="200" height="400" />  <img src="https://github.com/MatveyGarbuzov/Swift/blob/main/Project3/ExampleProject3.gif" width="200" height="400" />  
